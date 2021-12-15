@@ -1,0 +1,25 @@
+package QR_code;
+
+
+import java.nio.file.Paths;
+
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.client.jse.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+
+public class Generate_QR {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		String data = "";
+		String path = "E:\\eclipse folder\\QR_Code\\gal.png";
+		
+		BitMatrix matrix = new MultiFormatWriter()
+				.encode(data, BarcodeFormat.QR_CODE, 200, 200);
+		
+		MatrixToImageWriter.writeToPath(matrix, "jpg", Paths.get(path));
+	}
+
+}
