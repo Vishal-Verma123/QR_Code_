@@ -1,0 +1,35 @@
+import java.util.zip.*;
+import java.io.UnsupportedEncodingException;
+
+public class Inflator {
+
+	public static void main(String[] args) throws DataFormatException, UnsupportedEncodingException {
+		// TODO Auto-generated method stub
+		Deflater d = new Deflater();       
+        String pattern = "VishalVerma", text = "";
+       
+        for (int i = 0; i < 5; i++)
+            text += pattern;
+   
+        d.setInput(text.getBytes("UTF-8"));  
+        d.finish();
+        
+        byte output[] = new byte[1024];
+        int size = d.deflate(output);
+        d.end();
+  
+        Inflater i = new Inflater();
+    
+        i.setInput(output);
+        byte inflater_output[] = new byte[1024];
+ 
+        int org_size = i.inflate(inflater_output);
+        System.out.println("Compressed output of deflater : "
+                + new String(output));
+System.out.println("Compressed output of Inflater : "
+                + new String(inflater_output, "UTF-8"));
+i.end();
+
+	}
+
+}
